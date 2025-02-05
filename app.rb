@@ -1,9 +1,12 @@
 require "sinatra"
 require "sinatra/reloader"
 
+
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+  currency_url= "https://api.exchangerate.host/list?access_key="+ exch_key
+  raw_currency_response= HTTP.get(currency_url)
+  parse_currency=JSON.parse(raw_currency)
+  currency = parse_currency.dig("success", "terms", "privacy", "currencies")
+  pp currency
+erb(:homepage)
 end
