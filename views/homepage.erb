@@ -1,7 +1,7 @@
 <h1>Currency Pair</h1>
 
 <ul>
-<% @currency_array.each do |abrev, currency| %>
-  <li> <a href="/<%= abrev %>">Convert 1 <%= abrev %> to...</li></a>
+<% @currency_array.each do |from_abrev, currency| %>
+  <li> <a href="/<%= from_abrev %>">Convert 1 <%= from_abrev %> to...</li></a>
 <% end %>
 </ul>

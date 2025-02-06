@@ -10,15 +10,22 @@ get("/") do
   @parse_currency=JSON.parse(@raw_currency_response)
   @currency_array = @parse_currency.fetch("currencies")
   @currency_hash = {
-    abrev: @currency_array.keys,
+    from_abrev: @currency_array.keys,
     currency: @currency_array.values
   }
 
 erb(:homepage)
 end
 
-get("/:abrev")do
-@orginal_currency=params.fetch("abrev")
+get("/:from_abrev")do
+@orginal_currency=params.fetch("from_abrev")
 api_url= "https://api.exchangerate.host/list?access_key="+exch_key
+@raw_currency_response= HTTP.get(currency_url).to_s
+@parse_currency=JSON.parse(@raw_currency_response)
+@currency_array = @parse_currency.fetch("currencies")
+@currency_hash = {
+  to_abrev: @currency_array.keys,
+  currency: @currency_array.values
+}
 
 end
