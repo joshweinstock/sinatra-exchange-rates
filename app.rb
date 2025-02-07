@@ -30,7 +30,6 @@ get("/:from_abrev/:to_abrev")do
 exchange_url= "https://api.exchangerate.host/convert?access_key=" +exch_key +"&from=#{@original_currency}&to=#{@destination_currency}&amount=1"
 @raw_currency_response= HTTP.get(exchange_url).to_s
 @parse_currency=JSON.parse(@raw_currency_response)
-@currency_array = @parse_currency.fetch("quotes")
-@quote = @parse_currency.fetch(@destination_currency)
+@currency_array = @parse_currency.fetch("result")
 erb(:to_abrev)
 end
