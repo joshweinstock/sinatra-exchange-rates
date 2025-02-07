@@ -1,0 +1,7 @@
+<h1>Convert <%= @original_currency %> </h1>
+
+<ul>
+<% @currency.each do |to_abrev| %>
+  <li> <a href="/<%= to_abrev %>">Convert 1 <%= @original_currency %> to <%= to_abrev%> ...</li></a>
+<% end %>
+</ul>
